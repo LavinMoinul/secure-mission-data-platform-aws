@@ -145,6 +145,8 @@ ip addr
 * Confirmed Git is installed and working on Windows
 * Created the local Git repository
 * Created the first project folders and Markdown documentation files
+* Ran basic Linux identity, shell, disk usage, and network interface commands inside the VM.
+* Verified the VM has a working shell environment and active network interface.
 
 ## What I Can Explain Without Notes
 
