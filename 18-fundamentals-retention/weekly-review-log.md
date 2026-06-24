@@ -168,3 +168,73 @@ ip addr
 * Practice commands inside the Linux VM
 * Create a clean VM snapshot
 * Start documenting actual lab outputs, not just concepts
+
+### Date
+
+2026-06-24
+
+### New Topic Learned
+
+Linux terminal productivity:
+
+* TAB completion
+* Keyboard shortcuts
+* Bash history
+* History privacy settings
+* Adding date/time to command history
+
+### Old Skills Reused
+
+```text
+pwd
+whoami
+echo $SHELL
+type
+man
+apropos
+df -h
+ip addr
+```
+
+### Commands Practiced
+
+```bash
+history
+history | tail
+echo $HISTSIZE
+echo $HISTFILESIZE
+cat ~/.bash_history
+history -d
+history -c
+```
+
+### What I Understand Now
+
+TAB completion helps me move faster and avoid typing mistakes.
+
+Keyboard shortcuts make terminal work faster.
+
+Bash history helps me reuse and audit commands, but it can also be risky if sensitive commands are saved.
+
+`HISTSIZE` controls session history, while `HISTFILESIZE` controls how much history is saved to the history file.
+
+`HISTTIMEFORMAT` can add timestamps to command history.
+
+### Weak Spots
+
+Need to remember exact variable names:
+
+* `HISTSIZE`
+* `HISTFILESIZE`
+* `HISTCONTROL`
+* `HISTTIMEFORMAT`
+
+Need more practice with:
+
+* `Ctrl + R`
+* `history -d`
+* history expansion like `!!`, `!17`, and `!ls`
+
+### Next Review
+
+Redo the Bash history commands and terminal shortcuts without notes.
