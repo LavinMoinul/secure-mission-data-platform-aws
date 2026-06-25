@@ -169,6 +169,7 @@ ip addr
 * Create a clean VM snapshot
 * Start documenting actual lab outputs, not just concepts
 
+
 ### Date
 
 2026-06-24
@@ -238,3 +239,128 @@ Need more practice with:
 ### Next Review
 
 Redo the Bash history commands and terminal shortcuts without notes.
+
+
+## Date
+
+2026-06-25
+
+### New Topic Learned
+
+Linux root access and privilege basics:
+
+* Root vs non-privileged users
+* `sudo`
+* `su`
+* `sudo su`
+* `sudo su -`
+* `passwd`
+* `sudo -v`
+* `sudo -k`
+* Root directory `/` vs root user home directory `/root`
+
+### Old Skills Reused
+
+```text
+TAB completion
+man pages
+Bash history
+history deletion
+running commands without saving to history
+Ctrl + D
+apt update
+package installation
+```
+
+### Commands Practiced
+
+```bash
+whoami
+id
+sudo whoami
+sudo su
+sudo su -
+su
+exit
+passwd
+sudo passwd root
+sudo -v
+sudo -k
+tail /etc/shadow
+apt update
+apt install nmap
+lshw
+man nmap
+route -n
+nmap -sV -p 80 www.example.com
+nmap -sV -p 80,443 default_gateway_ip
+history
+history -d 4
+history -c
+```
+
+### Challenges Completed
+
+Section 4 Linux Terminal challenges completed successfully.
+
+Challenge topics:
+
+* Ran `tail /etc/shadow` as a normal user and as root
+* Used TAB completion
+* Became root temporarily
+* Installed `nmap`
+* Exited root with `Ctrl + D`
+* Set the root password
+* Used `su`
+* Ran `lshw` as root
+* Used `man nmap` and searched for `-sV`
+* Ran a basic `nmap -sV` scan
+* Found the default gateway using `route -n`
+* Practiced history display, line deletion, no-trace command usage, and history clearing
+
+### What I Understand Now
+
+Root is the most privileged account on a Linux system.
+
+Normal users should be used for normal work, and root/admin privileges should only be used when needed.
+
+`sudo [command]` is safer than staying logged in as root because it runs one admin command at a time.
+
+`su` switches users and can be used to become root if the root password is known.
+
+`sudo su` and `sudo su -` both give root shells, but `sudo su -` loads the root login environment.
+
+`passwd` changes passwords, and root can change other users’ passwords.
+
+The root directory `/` is the top-level filesystem directory, while `/root` is the root user’s home directory.
+
+### Security Connection
+
+This topic connects directly to least privilege.
+
+In cloud/security work, users and services should only receive the permissions they need. Admin access should be controlled, temporary, and auditable.
+
+This will matter later for:
+
+* SSH access
+* sudoers
+* Linux hardening
+* IAM roles
+* cloud admin permissions
+* incident response
+* audit logging
+
+### Weak Spots
+
+Need more review on:
+
+* exact difference between `sudo su` and `sudo su -`
+* when to use `sudo [command]` instead of a root shell
+* `route -n` output and identifying the default gateway
+* safe and ethical use of `nmap`
+
+### Next Review
+
+Redo the root access commands and explain the difference between normal user, root, `sudo`, and `su` without notes.
+
+
