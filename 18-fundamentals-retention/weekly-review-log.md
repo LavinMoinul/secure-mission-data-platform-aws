@@ -364,3 +364,133 @@ Need more review on:
 Redo the root access commands and explain the difference between normal user, root, `sudo`, and `su` without notes.
 
 
+## Date
+
+2026-06-26
+
+### New Topic Learned
+
+Linux filesystem basics:
+
+* What a filesystem does
+* Linux treating almost everything as a file
+* Filesystem Hierarchy Standard
+* Common Linux directories
+* Root directory `/`
+* Root user home directory `/root`
+* Normal user home directories under `/home`
+* Current user home shortcut `~`
+* Absolute paths
+* Relative paths
+* `.` and `..`
+* Hidden dotfiles
+* `pwd`, `cd`, `ls`, and `tree`
+
+### Old Skills Reused
+
+```text
+TAB completion
+root directory vs /root
+/home and user home directories
+ls
+cat
+reading protected/sensitive filesystem paths
+Bash history
+terminal navigation
+```
+
+### Commands Practiced
+
+```bash
+pwd
+cd
+cd ~
+cd ..
+cd ../..
+ls
+ls /
+ls ~
+ls ..
+ls ../..
+ls -la
+cat /etc/hosts
+cat hosts
+cat /etc/cron.daily/logrotate
+cat cron.daily/logrotate
+cat ../../etc/cron.daily/logrotate
+tree
+tree -d
+tree -f
+lsblk
+df -h
+```
+
+### What I Understand Now
+
+A filesystem controls how data is stored, retrieved, named, and organized.
+
+Linux has one top-level root directory: `/`.
+
+The root directory `/` is not the same thing as `/root`.
+
+`/root` is the home directory of the root user.
+
+Normal users usually have home directories under `/home`.
+
+`~` means the home directory of the current user, such as `/home/lavin`.
+
+An absolute path starts from `/` and works from anywhere.
+
+A relative path starts from the current working directory and does not start with `/`.
+
+`.` means the current directory.
+
+`..` means the parent directory.
+
+Files that start with `.` are hidden files.
+
+`tree` helps visualize directory structure recursively.
+
+### Security and Cloud Connection
+
+Filesystem knowledge matters because important Linux server files live in predictable places.
+
+This connects later to:
+
+* SSH configuration
+* SSH keys
+* system logs
+* user account files
+* protected password files
+* service configuration
+* backups
+* web server directories
+* cloud server troubleshooting
+
+Important examples:
+
+* `/etc/ssh/sshd_config`
+* `/var/log`
+* `/home/user/.ssh`
+* `/etc/passwd`
+* `/etc/shadow`
+* `/tmp`
+* `/var/www`
+
+### Weak Spots
+
+Need more review on:
+
+* moving through relative paths with `..`
+* common FHS directory purposes
+* `tree -f` behavior
+
+### Next Review
+
+Redo path practice without notes:
+
+* start from `/home/lavin`
+* explain how to reach `/etc`
+* explain why `../../etc/cron.daily/logrotate` works
+* compare `/`, `/root`, `/home`, and `~`
+
