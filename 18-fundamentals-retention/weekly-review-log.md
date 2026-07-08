@@ -494,3 +494,189 @@ Redo path practice without notes:
 * explain why `../../etc/cron.daily/logrotate` works
 * compare `/`, `/root`, `/home`, and `~`
 
+
+---
+
+## Date
+
+2026-07-08
+
+### New Topic Learned
+
+Linux file viewing and basic file management:
+
+* `cat`
+* `cat -n`
+* `less`
+* `head`
+* `tail`
+* `tail -f`
+* `watch`
+* `mkdir`
+* `mkdir -p`
+* `mkdir -v`
+* `touch`
+* `cp`
+* `cp -i`
+* `cp -r`
+* basic redirection using `>` and `>>`
+
+### Old Skills Reused
+
+```text
+pwd
+cd
+ls
+tree
+relative paths
+file and directory structure
+Ctrl + C
+man pages / command exploration
+```
+
+### Commands Practiced
+
+```bash
+mkdir
+mkdir -v
+mkdir -p
+cd
+pwd
+ls
+tree
+touch
+cat
+cat -n
+less
+head
+head -n 2
+tail
+tail -n 2
+tail -f
+watch -n 2
+cp
+cp -i
+cp -r
+echo "text" > file
+echo "text" >> file
+```
+
+### What I Tested or Validated
+
+* Created a Linux practice workspace named `section5-file-practice`
+* Created nested directories using `mkdir -p`
+* Created files using `touch`
+* Added file contents using `echo`
+* Confirmed that `>` overwrites file contents
+* Confirmed that `>>` appends to file contents
+* Used `cat` to view full file contents
+* Used `cat -n` to view file contents with line numbers
+* Used `less` to open a file in a scrollable viewer
+* Used `head` and `tail` to view the beginning and end of files
+* Used `tail -f` to watch a log file update live
+* Used `watch` to monitor a directory as files changed
+* Copied files with `cp`
+* Confirmed that `cp` overwrites by default
+* Used `cp -i` to ask before overwriting
+* Confirmed that normal `cp` fails on directories without recursive mode
+* Used `cp -r` to copy a directory and its contents
+
+### What I Understand Now
+
+`cat` is useful for quickly viewing smaller files.
+
+`cat -n` shows line numbers.
+
+`less` is better for larger files because it lets me scroll and search instead of printing everything at once.
+
+`head` shows the beginning of a file.
+
+`tail` shows the end of a file.
+
+`tail -f` follows a file as it grows, which is useful for live log monitoring.
+
+`watch` repeatedly runs a command and refreshes the output.
+
+`mkdir` creates directories.
+
+`mkdir -v` creates a directory and prints confirmation.
+
+`mkdir -p` creates missing parent directories.
+
+`touch` creates empty files if they do not exist.
+
+`cp` copies files and overwrites by default.
+
+`cp -i` asks before overwriting.
+
+`cp -r` copies directories recursively.
+
+`>` overwrites a file.
+
+`>>` appends to a file.
+
+### Mistakes / Things to Remember
+
+I initially used `>` multiple times when adding lines to `logs/app.log`, which overwrote the previous contents each time.
+
+I corrected this by using `>>` to append lines.
+
+I also tried to run:
+
+```bash
+cat notes.txt
+```
+
+from the wrong location. The file was inside `docs`, so the correct path was:
+
+```bash
+cat docs/notes.txt
+```
+
+Normal `cp` failed on a directory because recursive mode was not specified.
+
+The correct command was:
+
+```bash
+cp -r projects backup
+```
+
+### Security and Cloud Connection
+
+These commands matter for Linux server and cloud work because I will need to inspect files, read logs, follow live logs, copy configuration files, back up directories, and avoid unsafe overwrites.
+
+This connects later to:
+
+* EC2 troubleshooting
+* SSH sessions
+* Linux log inspection
+* backup and restore workflows
+* service configuration review
+* CloudOps runbooks
+* incident response basics
+
+### Weak Spots
+
+Need more practice with:
+
+* choosing `>` vs `>>`
+* remembering correct relative paths
+* using `less` navigation without notes
+* using `tail -f` and `watch` smoothly with two terminals
+* knowing when a command is safe vs destructive
+
+### Next Review
+
+Practice the next Section 5 file management commands:
+
+* `mv`
+* `rm`
+* `shred`
+
+Then review:
+
+* moving vs copying files
+* renaming files
+* safe deletion habits
+* destructive command caution
+* when to use interactive options
