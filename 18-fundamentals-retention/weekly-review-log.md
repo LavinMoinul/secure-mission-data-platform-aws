@@ -680,3 +680,182 @@ Then review:
 * safe deletion habits
 * destructive command caution
 * when to use interactive options
+
+
+---
+
+## Date
+
+2026-07-09
+
+### New Topic Learned
+
+Linux moving, renaming, removing, and secure deletion basics:
+
+* `mv`
+* `mv -i`
+* `mv -n`
+* `mv -u`
+* wildcards with `mv`
+* `rm`
+* `rm -i`
+* `rm -r`
+* `rm -rf`
+* `shred`
+* `shred -v`
+* `shred -u`
+* `shred -n`
+
+### Old Skills Reused
+
+```text
+pwd
+tree
+cat
+cat -n
+head
+tail
+cp
+cp -i
+cp -r
+relative paths
+wildcards
+TAB autocomplete
+redirection with >
+redirection with >>
+```
+
+### Commands Practiced
+
+```bash
+pwd
+tree
+cat logs/app.log
+cat -n logs/app.log
+head -n 2 logs/app.log
+tail -n 2 logs/app.log
+cat inbox/report.txt logs/app.log > backup/combined.txt
+cp inbox/report.txt backup/
+cp -i source destination
+cp -r inbox backup/
+mv inbox/todo.txt inbox/tasks.txt
+mv inbox/report.txt archive/
+mv logs/*.log archive/
+mv -i inbox/a.txt archive/
+mv -n inbox/a.txt archive/
+mv -u inbox/a.txt archive/
+rm -i trash-test/delete-me.txt
+rm trash-test/subdir/
+rm -r trash-test/subdir/
+rm -rf danger-zone/
+shred -v -u -n 100 secrets/token.txt
+```
+
+### What I Tested or Validated
+
+* Created a safe Linux lab workspace called `section5-mv-rm-lab`
+* Created directories for inbox, archive, backup, logs, trash testing, and secrets
+* Reviewed file viewing using `cat`, `cat -n`, `head`, and `tail`
+* Combined file contents into `backup/combined.txt`
+* Copied files and directories using `cp`, `cp -i`, and `cp -r`
+* Renamed `todo.txt` to `tasks.txt` using `mv`
+* Moved `report.txt` from `inbox/` to `archive/`
+* Used a wildcard to move `.log` files into `archive/`
+* Tested `mv -i` and answered `n` to avoid overwriting
+* Tested `mv -n` to refuse overwriting
+* Tested `mv -u` for update-only move behavior
+* Used `rm -i` for safer file deletion
+* Confirmed normal `rm` fails on directories
+* Used `rm -r` to remove a directory recursively
+* Used `rm -rf` only inside a disposable lab directory
+* Used `shred` to overwrite and remove a fake secret file
+* Confirmed `secrets/token.txt` was removed after shredding
+
+### What I Understand Now
+
+`cp` copies files or directories when used with the correct options.
+
+`mv` moves or renames files and directories.
+
+If `mv` moves a file into a directory where the same filename already exists, it can overwrite the destination file.
+
+`mv -i` asks before overwriting.
+
+`mv -n` refuses to overwrite existing destination files.
+
+`mv -u` only moves when the source is newer than the destination or when the destination is missing.
+
+Wildcards can target groups of files, such as all `.log` files.
+
+Normal `rm` removes files but does not remove directories unless recursive mode is used.
+
+`rm -r` removes directories recursively.
+
+`rm -rf` removes recursively and forcefully, making it very dangerous if used on the wrong path.
+
+`shred` overwrites a file before removing it, making recovery harder than normal `rm`.
+
+`shred` is still not perfect because SSDs, journaling filesystems, backups, snapshots, and cloud storage may preserve data elsewhere.
+
+### Mistakes / Things to Remember
+
+`mv` can overwrite destination files if the same filename already exists.
+
+`mv -n` does not mean "move without overwriting" in a magical merge sense. It refuses to overwrite if there is a conflict.
+
+`rm -f` does not bypass all permissions. It mainly suppresses prompts and ignores nonexistent files.
+
+`rm -rf` should only be used after checking the current directory and target path.
+
+Extra spaces in destructive commands can change the arguments being deleted.
+
+TAB autocomplete helps prevent path mistakes before deletion.
+
+### Security and Cloud Connection
+
+These commands matter for Linux server and cloud work because moving and deleting files can affect logs, configuration files, secrets, backups, and evidence.
+
+This connects later to:
+
+* EC2 troubleshooting
+* SSH sessions
+* Linux hardening
+* service configuration management
+* backup and recovery workflows
+* incident response
+* log preservation
+* secret handling
+* secure deletion limits
+* CloudOps runbooks
+
+### Weak Spots
+
+Need more practice with:
+
+* explaining `mv -u` clearly
+* remembering that `rm -f` does not override all permissions
+* avoiding sloppy wording between copy, move, and remove
+* thinking carefully before using destructive commands
+* understanding the limits of `shred` on modern storage
+
+### Next Review
+
+Review:
+
+* `mv -i`
+* `mv -n`
+* `mv -u`
+* `rm -r`
+* `rm -rf`
+* `shred -v -u -n`
+
+Then move into pipes and redirection:
+
+* `|`
+* `wc`
+* `>`
+* `>>`
+* `2>`
+* `&>`
+* `cut`
+* `tee`
