@@ -859,3 +859,181 @@ Then move into pipes and redirection:
 * `&>`
 * `cut`
 * `tee`
+
+
+---
+
+## Date
+
+2026-07-10
+
+### New Topic Learned
+
+Linux pipes, command redirection, standard streams, `wc`, `cut`, and `tee`.
+
+Topics covered:
+
+* pipes with `|`
+* `wc`
+* `wc -l`
+* `wc -w`
+* `wc -c`
+* `wc -m`
+* redirection with `>`
+* appending with `>>`
+* `STDIN`
+* `STDOUT`
+* `STDERR`
+* redirecting errors with `2>`
+* combining output and errors with `2>&1`
+* extracting fields with `cut`
+* saving and printing output with `tee`
+
+### Old Skills Reused
+
+```text
+ls
+ls -ltr
+head
+tail
+cat
+/etc/passwd
+/var/log paths
+redirection with >
+redirection with >>
+relative and absolute paths
+error handling
+```
+
+### Commands Practiced
+
+```bash
+ls -ltr /etc/ | head -n 20 | tail -n 7
+wc file.txt
+wc -l file.txt
+wc -w file.txt
+wc -c file.txt
+wc -m file.txt
+ls -l /var/log/auth.log > newAuthLogFile.txt
+echo "new line" >> output.txt
+tail -n 3 /etc/randomFile.txt 2> error.txt
+tail -n 2 /etc/passwd /false/directory > output.txt 2>&1
+cut -d ":" -f1 /etc/passwd
+cut -d ":" -f1-3 /etc/passwd
+cut -d ":" -f1,3 /etc/passwd
+ls -ltr /etc/ | tee output.txt
+ls -ltr /etc/ | tee output1.txt output2.txt
+ls -ltr /etc/passwd /fake/invalid 2>&1 | tee output.txt
+```
+
+### What I Tested or Validated
+
+* Confirmed that pipes send the left command’s `STDOUT` into the right command’s `STDIN`
+* Used `head` and `tail` together through a pipe
+* Used `wc` to count lines, words, bytes, and characters
+* Confirmed that `>` redirects `STDOUT` to a file and overwrites
+* Confirmed that `>>` appends instead of overwriting
+* Learned that every command has `STDIN`, `STDOUT`, and `STDERR`
+* Confirmed that `>` defaults to redirecting `STDOUT`
+* Confirmed that errors require `2>` if I want to redirect `STDERR`
+* Practiced sending `STDERR` to the same destination as `STDOUT` with `2>&1`
+* Used `cut` to extract fields from `/etc/passwd`
+* Used `tee` to print output to the terminal and save it to a file
+* Learned that pipes do not carry `STDERR` by default
+* Practiced redirecting `STDERR` before a pipe so `tee` receives both normal output and errors
+
+### What I Understand Now
+
+A pipe sends `STDOUT` from one command into `STDIN` of another command.
+
+`STDIN` is standard input.
+
+`STDOUT` is standard output.
+
+`STDERR` is standard error.
+
+`>` redirects `STDOUT` to a file.
+
+`>>` appends `STDOUT` to a file.
+
+`2>` redirects `STDERR`.
+
+`2>&1` sends `STDERR` to wherever `STDOUT` is currently going.
+
+`wc` can count lines, words, bytes, and characters.
+
+`cut` can extract specific fields from structured text.
+
+`tee` lets me view output and save it at the same time.
+
+Pipes only carry `STDOUT` by default, not `STDERR`.
+
+### Mistakes / Things to Remember
+
+`>` can overwrite useful output, logs, or evidence.
+
+`>>` should be used when I want to append instead of replace.
+
+A pipe does not automatically send errors to the next command.
+
+If I write:
+
+```bash
+command1 | tee output.txt 2>&1
+```
+
+the `2>&1` applies to `tee`, not `command1`.
+
+To send both normal output and errors from the first command into `tee`, use:
+
+```bash
+command1 2>&1 | tee output.txt
+```
+
+The order of redirection matters.
+
+### Security and Cloud Connection
+
+Pipes and redirection matter for Linux server and cloud work because troubleshooting often requires saving output, filtering results, and capturing errors.
+
+This connects later to:
+
+* log inspection
+* incident response notes
+* CloudOps runbooks
+* shell scripting
+* cron job output
+* error logging
+* security investigations
+* extracting useful fields from system files
+* saving command evidence without losing terminal visibility
+
+### Weak Spots
+
+Need more practice with:
+
+* explaining `STDIN`, `STDOUT`, and `STDERR` quickly
+* remembering that pipes only carry `STDOUT` by default
+* knowing when `2>&1` applies to the command before or after a pipe
+* using `cut` naturally
+* deciding when to use `tee` instead of `>`
+
+### Next Review
+
+Review:
+
+* `|`
+* `wc`
+* `>`
+* `>>`
+* `2>`
+* `2>&1`
+* `cut`
+* `tee`
+
+Then move into finding files and searching text:
+
+* `which`
+* `plocate`
+* `find`
+* `grep`
