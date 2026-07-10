@@ -2,7 +2,7 @@
 
 ## Project Purpose
 
-This repository documents my long-term AWS solutions architecture case study for a simulated secure mission data platform.
+This repository documents a long-term AWS solutions architecture case study for a simulated secure mission data platform.
 
 The project is being built from the ground up, starting with Linux and local server fundamentals before progressing into AWS networking, databases, security, cost modeling, Terraform, validation testing, and architecture documentation.
 
@@ -54,9 +54,34 @@ This structure is meant to keep Linux, networking, databases, security, cost mod
 
 ## Current Phase
 
-Current phase: Linux foundation and local lab setup.
+Current phase: Linux systems foundation and local lab setup.
 
-I am currently working on VirtualBox, terminal basics, Linux command structure, man pages, snapshots, safe rollback habits, and early documentation standards.
+I am currently building the operating system and command-line foundation required for secure cloud infrastructure work. This phase focuses on developing practical Linux fluency before applying the same concepts to AWS-based environments.
 
-These fundamentals will later map into AWS concepts such as EC2, security groups, VPC traffic flow, CloudWatch logging, RDS recovery, Terraform rebuilds, and sandbox validation.
+Completed foundation work includes:
 
+* VirtualBox setup, snapshots, and rollback habits
+* terminal, shell, and console fundamentals
+* Linux command structure and help tools
+* Bash history and terminal productivity
+* root, `sudo`, and privilege basics
+* Linux filesystem hierarchy and path navigation
+* file metadata, timestamps, and file type inspection
+* file viewing with `cat`, `less`, `head`, and `tail`
+* live file monitoring with `tail -f`, `tail -F`, and `watch`
+* file and directory creation with `touch` and `mkdir`
+* copy, move, rename, and overwrite behavior with `cp` and `mv`
+* safe file removal with `rm`
+* intro to secure deletion concepts with `shred`
+* command chaining with pipes
+* command redirection using `>`, `>>`, `2>`, and `2>&1`
+* standard streams: `STDIN`, `STDOUT`, and `STDERR`
+* field extraction with `cut`
+* output capture and logging with `tee`
+
+Current lab artifacts include:
+
+* `labs/linux/01-filesystem-and-metadata/`
+* `labs/linux/02-moving-removing-secure-deletion/`
+
+This Linux foundation will later support AWS work involving EC2 administration, SSH access, CloudWatch and CloudTrail log workflows, secure configuration handling, backup and recovery validation, Terraform automation, incident response notes, and infrastructure troubleshooting.
